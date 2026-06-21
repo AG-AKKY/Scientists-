@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icons of Science</title>
+    <style>
+        /* --- Science Theme Variables --- */
+        :root {
+            --bg-space: #0a0b10;
+            --bg-card: #121420;
+            --neon-blue: #00f2fe;
+            --neon-purple: #4facfe;
+            --text-main: #f0f4f8;
+            --text-muted: #94a3b8;
+        }
+
+        /* --- Global Reset & Background --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-space);
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
+            background-size: 550px 550px, 350px 350px, 250px 250px;
+            background-position: 0 0, 40px 60px, 130px 270px;
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        /* --- Header Styling --- */
+        header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        header::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            margin: 1rem auto 0;
+            border-radius: 2px;
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        /* --- Grid Layout --- */
+        .grid-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            padding: 1rem;
+        }
+
+        /* --- Scientist Card Styling --- */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 242, 254, 0.15);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.3);
+        }
+
+        /* Card Image Context */
+        .image-container {
+            width: 100%;
+            height: 280px;
+            position: relative;
+            overflow: hidden;
+            background: #1e2235;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .image-container img {
+            transform: scale(1.08);
+        }
+
+        /* Cyberpunk-style tag over image */
+        .field-tag {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            background: rgba(10, 11, 16, 0.85);
+            color: var(--neon-blue);
+            padding: 0.4rem 0.8rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 4px;
+            border-left: 3px solid var(--neon-blue);
+            text-transform: uppercase;
+            backdrop-filter: blur(4px);
+        }
+
+        /* Card Content */
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-content h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+            color: #fff;
+        }
+
+        .lifespan {
+            font-size: 0.85rem;
+            color: var(--neon-purple);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .description {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Titans of Science</h1>
+        <p>Exploring the minds that unlocked the secrets of the cosmos</p>
+    </header>
+
+    <div class="grid-container" id="scientists-grid">
+        </div>
+
+    <footer>
+        <p>&copy; 2026 • Built with Cosmic Data</p>
+    </footer>
+
+    <script>
+        // Scientist Data Array (Using high-quality, reliable Unsplash placeholder images)
+        const scientists = [
+            {
+                name: "Albert Einstein",
+                lifespan: "1879 – 1955",
+                field: "Theoretical Physics",
+                desc: "Developed the theory of relativity ($E=mc^2$), fundamentally altering our understanding of time, space, and gravity.",
+                image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=500&q=80" // Cosmic theme placeholder
+            },
+            {
+                name: "Marie Curie",
+                lifespan: "1867 – 1934",
+                field: "Radiochemistry",
+                desc: "Pioneered research on radioactivity, discovered Radium and Polonium, and remains the only person to win Nobel Prizes in two different sciences.",
+                image: "https://images.unsplash.com/photo-1532187863486-abf9d39d6618?auto=format&fit=crop&w=500&q=80" // Lab theme placeholder
+            },
+            {
+                name: "Nikola Tesla",
+                lifespan: "1856 – 1943",
+                field: "Electrical Engineering",
+                desc: "Invented the Alternating Current (AC) electricity system, high-voltage Tesla coils, and envisioned a world of wireless global communication.",
+                image: "https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&w=500&q=80" // Energy theme placeholder
+            },
+            {
+                name: "Ada Lovelace",
+                lifespan: "1815 – 1852",
+                field: "Computer Science",
+                desc: "Analytic theorist widely recognized as the world's first computer programmer, having written the first algorithm intended for a machine.",
+                image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=500&q=80" // Code theme placeholder
+            },
+            {
+                name: "Isaac Newton",
+                lifespan: "1643 – 1727",
+                field: "Mathematics & Physics",
+                desc: "Formulated the laws of motion and universal gravitation, co-invented calculus, and revolutionized the field of optics.",
+                image: "https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&w=500&q=80" // Gravity/Prism vibe placeholder
+            },
+            {
+                name: "Rosalind Franklin",
+                lifespan: "1920 – 1958",
+                field: "Molecular Biology",
+                desc: "Captured 'Photo 51', the crucial X-ray diffraction image that revealed the double-helix structure of DNA.",
+                image: "https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?auto=format&fit=crop&w=500&q=80" // Genetics vibe placeholder
+            }
+        ];
+
+        // Function to render cards to the DOM
+        function displayScientists() {
+            const grid = document.getElementById('scientists-grid');
+            
+            grid.innerHTML = scientists.map(scientist => `
+                <div class="card">
+                    <div class="image-container">
+                        <img src="${scientist.image}" alt="${scientist.name}">
+                        <div class="field-tag">${scientist.field}</div>
+                    </div>
+                    <div class="card-content">
+                        <h2>${scientist.name}</h2>
+                        <div class="lifespan">${scientist.lifespan}</div>
+                        <p class="description">${scientist.desc}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Initialize display on load
+        window.onload = displayScientists;
+    </script>
+</body>
+</html>
+
